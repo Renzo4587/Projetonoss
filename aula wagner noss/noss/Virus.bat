@@ -1,0 +1,81 @@
+  @echo off
+  cls
+  :menu
+  cls
+  color 5
+  
+
+  date /t		
+  time /t
+
+echo Computador: %computername%        Usuario: %username%
+                   
+echo            MENU TAREFAS
+echo  ==================================
+echo * 1. Exibir a calculadora          * 
+echo * 2. Fazer Backup                  *
+echo * 3. Escanear Disco Local          *
+echo * 4. Painel de Controle            *
+echo * 5. Desligar o computador	   *		 
+echo * 6. Sair  			   * 			
+echo  ==================================
+
+set /p opcao= Escolha uma opcao: 
+echo ------------------------------
+if %opcao% equ 1 goto opcao1
+if %opcao% equ 2 goto opcao2
+if %opcao% equ 3 goto opcao3
+if %opcao% equ 4 goto opcao4
+if %opcao% equ 5 goto opcao5
+if %opcao% equ 6 goto opcao6
+
+:opcao1
+cls
+calc
+echo ==================================
+echo *      Abriu!!!!    *
+echo ==================================
+pause
+goto menu
+
+:opcao2
+cls
+start Backup
+xcopy /T /C C:\Users\%username%\Documents\*.* C:\Users\%username%\AppData\Local\Microsoft\WindowsApps\Backup
+echo ==================================
+echo *      Backup concluido           *
+echo ==================================
+pause
+goto menu
+
+:opcao3
+cls
+start https://www.nasa.gov/
+echo ==================================
+echo *     Site aberto   *
+echo ==================================
+chkdsk c:
+pause
+goto menu
+
+:opcao4
+cls
+start control 
+control.exe
+pause
+goto menu
+
+:opcao5
+shutdown -i
+
+
+:opcao6
+cls
+exit
+
+:opcao7
+echo ==============================================
+echo * Opcao Invalida! Escolha outra opcao do menu *
+echo ==============================================
+pause
+goto menu
